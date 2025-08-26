@@ -30,10 +30,11 @@ const Agent = ({
   type,
   questions,
 }: AgentProps) => {
+  const [isSpeaking, setIsSpeaking] = useState(false);
   const router = useRouter();
   const [callStatus, setCallStatus] = useState<CallStatus>(CallStatus.INACTIVE);
   const [messages, setMessages] = useState<SavedMessage[]>([]);
-  const [isSpeaking, setIsSpeaking] = useState(false);
+
   const [lastMessage, setLastMessage] = useState<string>("");
 
   useEffect(() => {
@@ -115,6 +116,7 @@ const Agent = ({
     }
   }, [messages, callStatus, feedbackId, interviewId, router, type, userId]);
 
+//handling the start of the call 
   const handleCall = async () => {
     setCallStatus(CallStatus.CONNECTING);
 
@@ -140,7 +142,7 @@ const Agent = ({
       });
     }
   };
-
+  // this will handle the disconnection of the call
   const handleDisconnect = () => {
     setCallStatus(CallStatus.FINISHED);
     vapi.stop();
