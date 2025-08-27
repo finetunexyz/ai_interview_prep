@@ -2,14 +2,14 @@ import dayjs from "dayjs";
 import Link from "next/link";
 import Image from "next/image";
 
-import { Button } from "./ui/button"; 
+import { Button } from "./ui/button";
 import DisplayTechIcons from "./DisplayTechIcons";
 
 import { cn, getRandomInterviewCover } from "@/lib/utils";
 import { getFeedbackByInterviewId } from "@/lib/actions/general.action";
 
 const InterviewCard = async ({
-  id,
+  interviewId,
   userId,
   role,
   type,
@@ -17,9 +17,9 @@ const InterviewCard = async ({
   createdAt,
 }: InterviewCardProps) => {
   const feedback =
-    userId && id
+    userId && interviewId
       ? await getFeedbackByInterviewId({
-          interviewId: id,
+          interviewId,
           userId,
         })
       : null;
@@ -95,8 +95,8 @@ const InterviewCard = async ({
             <Link
               href={
                 feedback
-                  ? `/interview/${id}/feedback`
-                  : `/interview/${id}`
+                  ? `/interview/${interviewId}/feedback`
+                  : `/interview/${interviewId}`
               }
             >
               {feedback ? "Check Feedback" : "View Interview"}

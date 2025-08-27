@@ -1,7 +1,7 @@
 
 import { getApp, initializeApp, getApps } from "firebase/app";
-import { getAuth } from "firebase-admin/auth";
-import { getFirestore } from "firebase-admin/firestore";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 import { getHeapSnapshot } from "v8";
 
 const firebaseConfig = {
@@ -15,7 +15,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = !getApps.length ? initializeApp(firebaseConfig):getApp()
+const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 
 export const auth = getAuth(app);
 

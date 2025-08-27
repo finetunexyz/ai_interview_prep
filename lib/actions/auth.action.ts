@@ -10,7 +10,7 @@ const SESSION_DURATION = 60 * 60 * 24 * 7;
 export async function setSessionCookie(idToken: string) {
   const cookieStore = await cookies();
 
-  // Create a session cookie
+  // Create session cookie
   const sessionCookie = await auth.createSessionCookie(idToken, {
     expiresIn: SESSION_DURATION * 1000, // milliseconds
   });
@@ -75,7 +75,7 @@ export async function signIn(params: SignInParams) {
     if (!userRecord)
       return {
         success: false,
-        message: "User does not exist. Create an account instead.",
+        message: "User does not exist. Create an account.",
       };
 
     await setSessionCookie(idToken);

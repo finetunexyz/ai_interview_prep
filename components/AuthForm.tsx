@@ -17,7 +17,7 @@ import {
 import { Form } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 
-import { signIn, signUp } from "@/lib/actions/auth.action"; 
+import { signIn, signUp } from "@/lib/actions/auth.action";
 import FormField from "./FormField";
 
 const authFormSchema = (type: FormType) => {
@@ -145,7 +145,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
         </Form>
 
         <p className="text-center">
-          {isSignIn ? "Don't have an account?" : "Already have an account?"}
+          {isSignIn ? "No account yet?" : "Have an account already?"}
           <Link
             href={!isSignIn ? "/sign-in" : "/sign-up"}
             className="font-bold text-user-primary ml-1"
