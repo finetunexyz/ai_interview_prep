@@ -98,7 +98,7 @@ export const mappings = {
 };
 
 export const interviewer: CreateWorkflowDTO = 
-  {
+{
   "name": "ai_interview_prep",
   "nodes": [
     {
@@ -111,7 +111,7 @@ export const interviewer: CreateWorkflowDTO =
           "y": -106.29865816865248
         }
       },
-      "prompt": "You are a friendly AI interview preparation assistant. Greet the user by name and ask for their interview requirements like {{role}}, interview {{type}} (technical/behavioral/mixed), experience{{level}}, {{techstack}}, and number of questions {{amount}}. Collect this information conversationally, then confirm all details before proceeding. Keep the conversation natural and encouraging.\nGreet the user. Inform them that you will get some information from them to create a perfect interview. Ask the caller for dthe ata required to extract. Ask the questions one by one, and await an answer.\n",
+      "prompt": "You are a friendly AI interview preparation assistant. Greet the user by name and ask for their interview requirements like {{role}}, interview {{type}} (technical/behavioral/mixed), experience{{level}}, {{techstack}}, and number of questions {{amount}}. Collect this information conversationally, then confirm all details before proceeding. Keep the conversation natural and encouraging. Greet the user. Inform them that you will get some information from them to create a perfect interview. Ask the caller for the data required to extract. Ask the questions one by one, and await an answer. However, if they say they're busy, not interested, or want to call back later, be understanding and polite. Acknowledge their preference and end the conversation naturally. Don't force the interview prep process on unwilling users.",
       "globalNodePlan": {
         "enabled": true,
         "enterCondition": ""
@@ -120,7 +120,7 @@ export const interviewer: CreateWorkflowDTO =
         "output": []
       },
       "messagePlan": {
-        "firstMessage": "Hello, {{username}}! Let's prepare your interview. I'll ask you a few questions and generate a perfect interview just for you. Are you ready?"
+        "firstMessage": "Hello {{username}}! Let's prepare your interview. I'll ask you a few questions and generate a perfect interview just for you. Are you ready? "
       },
       "toolIds": [
         "823748c8-2147-4e72-9422-4dc30996d758"
@@ -187,7 +187,7 @@ export const interviewer: CreateWorkflowDTO =
         "messages": [
           {
             "type": "request-start",
-            "content": "Please hold on. I am sending a request to the app.",
+            "content": "Great news! Your interview questions are currently being prepared. Please hold on for a moment—I appreciate your patience and can't wait for you to see the questions soon!",
             "blocking": true
           },
           {
@@ -244,19 +244,11 @@ export const interviewer: CreateWorkflowDTO =
   "edges": [
     {
       "from": "introduction",
-      "to": "apiRequest_1756363549561",
-      "condition": {
-        "type": "ai",
-        "prompt": "if the user provided all the data to be extra"
-      }
+      "to": "apiRequest_1756363549561"
     },
     {
       "from": "apiRequest_1756363549561",
-      "to": "hangup_1756441452140",
-      "condition": {
-        "type": "ai",
-        "prompt": ""
-      }
+      "to": "hangup_1756441452140"
     }
   ],
   "globalPrompt": ""
