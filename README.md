@@ -5,6 +5,63 @@ PrepViewAI is an intelligent interview preparation platform that leverages cutti
 
 
 ---
+
+<div align="center" style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap;">
+
+<a href="https://nextjs.org/" target="_blank">
+  <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js" />
+</a>
+
+<a href="https://vapi.ai/" target="_blank">
+  <img src="https://img.shields.io/badge/Vapi_AI-5DFECA?style=for-the-badge&logoColor=black" alt="Vapi AI" />
+</a>
+
+<a href="https://gemini.google.com/" target="_blank">
+  <img src="https://img.shields.io/badge/Google_Gemini-8E75B8?style=for-the-badge&logo=google&logoColor=white" alt="Google Gemini" />
+</a>
+
+<a href="https://tailwindcss.com/" target="_blank">
+  <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" />
+</a>
+
+<a href="https://firebase.google.com/" target="_blank">
+  <img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black" alt="Firebase" />
+</a>
+
+<a href="https://ui.shadcn.com/" target="_blank">
+  <img src="https://img.shields.io/badge/shadcn/ui-000000?style=for-the-badge&logoColor=white" alt="shadcn/ui" />
+</a>
+
+<a href="https://vercel.com/" target="_blank">
+  <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel" />
+</a>
+
+<a href="https://www.typescriptlang.org/" target="_blank">
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+</a>
+
+<a href="https://nodejs.org/" target="_blank">
+  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js" />
+</a>
+
+<a href="https://zod.dev/" target="_blank">
+  <img src="https://img.shields.io/badge/Zod-3068B7?style=for-the-badge&logoColor=white" alt="Zod" />
+</a>
+
+<a href="https://github.com/features/actions" target="_blank">
+  <img src="https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white" alt="GitHub Actions" />
+</a>
+
+</div>
+
+
+
+
+
+
+
+---
+
 <!-- 🔥 Project Banner (Replace below with your resized 1200×630 banner) -->
 <p align="center">
   <p align="center">
