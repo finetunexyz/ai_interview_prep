@@ -38,9 +38,10 @@ async function Home() {
         <Image
           src="/robot.png"
           alt="robo-dude"
-          width={400}
-          height={400}
+          width={450}
+          height={450}
           className="max-sm:hidden"
+          
         />
       </section>
 

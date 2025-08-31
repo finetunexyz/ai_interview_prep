@@ -97,8 +97,9 @@ export const mappings = {
   "aws amplify": "amplify",
 };
 
-export const interviewer: CreateWorkflowDTO = 
-{
+
+export const generator: CreateWorkflowDTO = 
+  {
   "name": "ai_interview_prep",
   "nodes": [
     {
@@ -107,39 +108,109 @@ export const interviewer: CreateWorkflowDTO =
       "isStart": true,
       "metadata": {
         "position": {
-          "x": -657.8897692862682,
-          "y": -106.29865816865248
+          "x": -661.9809898882805,
+          "y": -83.42485446751547
         }
       },
-      "prompt": "You are a friendly AI interview preparation assistant. Greet the user by name and ask for their interview requirements like {{role}}, interview {{type}} (technical/behavioral/mixed), experience{{level}}, {{techstack}}, and number of questions {{amount}}. Collect this information conversationally, then confirm all details before proceeding. Keep the conversation natural and encouraging. Greet the user. Inform them that you will get some information from them to create a perfect interview. Ask the caller for the data required to extract. Ask the questions one by one, and await an answer. However, if they say they're busy, not interested, or want to call back later, be understanding and polite. Acknowledge their preference and end the conversation naturally. Don't force the interview prep process on unwilling users.",
+      "prompt": "You are a friendly AI interview preparation assistant. \nYou are a professional career coach having a natural conversation. After greeting the user, gather information about their interview preparation needs conversationally, just as a real consultant would.\nKey behaviors:\nRespond to social cues (if they ask how you are, acknowledge it naturally)\nShow interest in their responses with brief encouraging comments\nAsk follow-up questions when appropriate to show you're listening\nUse varied phrasing - never repeat the same sentence structure\nConnect their answers to show you understand their goals.\n\nImportant: If there are any technical glitches or you start repeating yourself, acknowledge it briefly (\"Sorry, let me rephrase that\") and continue naturally. Never repeat the same question twice.\n",
+      "voice": {
+        "model": "eleven_turbo_v2_5",
+        "voiceId": "mCQMfsqGDT6IDkEKR20a",
+        "provider": "11labs"
+      },
       "globalNodePlan": {
         "enabled": true,
         "enterCondition": ""
       },
       "variableExtractionPlan": {
-        "output": []
+        "output": [
+          {
+            "enum": [],
+            "type": "string",
+            "title": "role",
+            "description": "What role would you like to train for?"
+          },
+          {
+            "enum": [],
+            "type": "string",
+            "title": "type",
+            "description": "Are you aiming for a technical, behavioral, or mixed interview?"
+          },
+          {
+            "enum": [],
+            "type": "string",
+            "title": "level",
+            "description": "The job experience level."
+          },
+          {
+            "enum": [],
+            "type": "string",
+            "title": "amount",
+            "description": "How many questions would you like me to prepare for you?"
+          },
+          {
+            "enum": [],
+            "type": "string",
+            "title": "techstack",
+            "description": "A list of technologies to cover during the job interview."
+          }
+        ]
       },
       "messagePlan": {
         "firstMessage": "Hello {{username}}! Let's prepare your interview. I'll ask you a few questions and generate a perfect interview just for you. Are you ready? "
       },
-      "toolIds": [
-        "823748c8-2147-4e72-9422-4dc30996d758"
-      ]
+      "toolIds": []
     },
     {
       "name": "apiRequest_1756363549561",
       "type": "tool",
       "metadata": {
         "position": {
-          "x": -669.6653137801169,
-          "y": 911.6478619994798
+          "x": -671.4936127322494,
+          "y": 780.4105595515216
         }
       },
       "tool": {
+        "type": "apiRequest",
+        "function": {
+          "name": "api_request_tool",
+          "description": "API request tool",
+          "parameters": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          }
+        },
+        "messages": [
+          {
+            "type": "request-start",
+            "content": "Indeed, your interview is on the way! Buckle up and enjoy this AI app, which is built by the smart AI Engineer and visionary leader, Dhruvansh Gandhi.",
+            "blocking": true
+          },
+          {
+            "type": "request-complete",
+            "content": "Thanks for your patience! I am happy to let you know that your interview has been successfully generated. I will redirect you to the dashboard now. Thanks for the call!",
+            "role": "assistant",
+            "endCallAfterSpokenEnabled": true
+          },
+          {
+            "type": "request-failed",
+            "content": "Oops, looks like something went wrong with your internet! Please try again",
+            "endCallAfterSpokenEnabled": true
+          }
+        ],
         "url": "https://ai-interview-prep-two-red.vercel.app/api/vapi/generate",
+        "method": "POST",
         "body": {
           "type": "object",
-          "required": [],
+          "required": [
+            "techstack",
+            "userid",
+            "amount",
+            "type",
+            "level",
+            "role"
+          ],
           "properties": {
             "role": {
               "type": "string",
@@ -173,35 +244,6 @@ export const interviewer: CreateWorkflowDTO =
             }
           }
         },
-        "type": "apiRequest",
-        "method": "POST",
-        "function": {
-          "name": "api_request_tool",
-          "parameters": {
-            "type": "object",
-            "required": [],
-            "properties": {}
-          },
-          "description": "API request tool"
-        },
-        "messages": [
-          {
-            "type": "request-start",
-            "content": "Great news! Your interview questions are currently being prepared. Please hold on for a moment—I appreciate your patience and can't wait for you to see the questions soon!",
-            "blocking": true
-          },
-          {
-            "role": "assistant",
-            "type": "request-complete",
-            "content": "The request has been sent, and the interview has been generated. Thank you for your call. Bye!",
-            "endCallAfterSpokenEnabled": true
-          },
-          {
-            "type": "request-failed",
-            "content": "Oops, looks like something went wrong when sending the data to the app. Please try again",
-            "endCallAfterSpokenEnabled": true
-          }
-        ],
         "variableExtractionPlan": {
           "schema": {
             "type": "object",
@@ -211,48 +253,84 @@ export const interviewer: CreateWorkflowDTO =
           "aliases": []
         }
       }
-    },
-    {
-      "name": "hangup_1756441452140",
-      "type": "tool",
-      "metadata": {
-        "position": {
-          "x": -669.2807296621218,
-          "y": 1315.6230956070249
-        }
-      },
-      "tool": {
-        "type": "endCall",
-        "function": {
-          "name": "untitled_tool",
-          "parameters": {
-            "type": "object",
-            "required": [],
-            "properties": {}
-          }
-        },
-        "messages": [
-          {
-            "type": "request-start",
-            "content": "Everything has been generated. I will redirect you to the dashboard now. Thanks for the call!",
-            "blocking": true
-          }
-        ]
-      }
     }
   ],
   "edges": [
     {
       "from": "introduction",
-      "to": "apiRequest_1756363549561"
-    },
-    {
-      "from": "apiRequest_1756363549561",
-      "to": "hangup_1756441452140"
+      "to": "apiRequest_1756363549561",
+      "condition": {
+        "type": "ai",
+        "prompt": "if the user provided all the data to be extra"
+      }
     }
   ],
-  "globalPrompt": ""
+  "voice": {
+    "model": "eleven_turbo_v2_5",
+    "voiceId": "mCQMfsqGDT6IDkEKR20a",
+    "provider": "11labs"
+  },
+  "globalPrompt": "Always listen first and respond to what the user actually says, not what you expect them to say\n- If someone seems hesitant, busy, or uninterested, respect their time and don't push\n- When collecting information, ask questions naturally as part of a conversation, not like filling out a form\n- Show genuine interest in their career goals and challenges\n- Adapt your communication style to match the user's energy and preference\n- If something is unclear, ask clarifying questions rather than making assumptions"
 }
+
+export const interviewer: CreateAssistantDTO = {
+  name: "Interviewer",
+  firstMessage:
+    "Hello! Thank you for taking the time to speak with me today. I'm excited to learn more about you and your experience.",
+  transcriber: {
+    provider: "deepgram",
+    model: "nova-2",
+    language: "en",
+  },
+  voice: {
+    provider: "11labs",
+    voiceId: "sarah",
+    stability: 0.4,
+    similarityBoost: 0.8,
+    speed: 0.9,
+    style: 0.5,
+    useSpeakerBoost: true,
+  },
+  model: {
+    provider: "openai",
+    model: "gpt-4",
+    messages: [
+      {
+        role: "system",
+        content: `You are a professional job interviewer conducting a real-time voice interview with a candidate. Your goal is to assess their qualifications, motivation, and fit for the role.
+
+Interview Guidelines:
+Follow the structured question flow:
+{{questions}}
+
+Engage naturally & react appropriately:
+Listen actively to responses and acknowledge them before moving forward.
+Ask brief follow-up questions if a response is vague or requires more detail.
+Keep the conversation flowing smoothly while maintaining control.
+Be professional, yet warm and welcoming:
+
+Use official yet friendly language.
+Keep responses concise and to the point (like in a real voice interview).
+Avoid robotic phrasing—sound natural and conversational.
+Answer the candidate’s questions professionally:
+
+If asked about the role, company, or expectations, provide a clear and relevant answer.
+If unsure, redirect the candidate to HR for more details.
+
+Conclude the interview properly:
+Thank the candidate for their time.
+Inform them that the company will reach out soon with feedback.
+End the conversation on a polite and positive note.
+
+
+- Be sure to be professional and polite.
+- Keep all your responses short and simple. Use official language, but be kind and welcoming.
+- This is a voice conversation, so keep your responses short, like in a real conversation. Don't ramble for too long.`,
+      },
+    ],
+  },
+};
+
 
 export const feedbackSchema = z.object({
   totalScore: z.number(),
