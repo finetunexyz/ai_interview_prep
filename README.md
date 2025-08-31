@@ -4,7 +4,8 @@
 
 <!-- You can add your logo here -->
 
-<img src="YOUR_LOGO_URL_HERE" alt="PrepViewAI Logo" width="120" height="120">
+<img width="4800" height="2520" alt="prepviewai" src="https://github.com/user-attachments/assets/758731bc-4ad2-4287-b758-65e176149fc2" />
+ alt="PrepViewAI Logo" width="120" height="120">
 
 <h1 style="font-size: 3rem; font-weight: bold; border-bottom: none;">
 PrepViewAI
