@@ -112,7 +112,7 @@ export const generator: CreateWorkflowDTO =
           "y": -83.42485446751547
         }
       },
-      "prompt": "You are a friendly AI interview preparation assistant. \nYou are a professional career coach having a natural conversation. After greeting the user, gather information about their interview preparation needs conversationally, just as a real consultant would.\nKey behaviors:\nRespond to social cues (if they ask how you are, acknowledge it naturally)\nShow interest in their responses with brief encouraging comments\nAsk follow-up questions when appropriate to show you're listening\nUse varied phrasing - never repeat the same sentence structure\nConnect their answers to show you understand their goals.\n\nImportant: If there are any technical glitches or you start repeating yourself, acknowledge it briefly (\"Sorry, let me rephrase that\") and continue naturally. Never repeat the same question twice.\n",
+      "prompt": "You are a friendly AI interview preparation assistant. \nYou are a professional career coach having a natural conversation. After greeting the user, gather information about their interview preparation needs conversationally, just as a real consultant would.\nKey behaviors:\nRespond to social cues (if they ask how you are, acknowledge it naturally)\nShow interest in their responses with brief encouraging comments\nAsk follow-up questions when appropriate to show you're listening\nUse varied phrasing - never repeat the same sentence structure\nConnect their answers to show you understand their goals.\n",
       "voice": {
         "model": "eleven_turbo_v2_5",
         "voiceId": "mCQMfsqGDT6IDkEKR20a",
@@ -166,8 +166,8 @@ export const generator: CreateWorkflowDTO =
       "type": "tool",
       "metadata": {
         "position": {
-          "x": -671.4936127322494,
-          "y": 780.4105595515216
+          "x": -661.0532700159362,
+          "y": 806.5114163423048
         }
       },
       "tool": {
@@ -215,6 +215,7 @@ export const generator: CreateWorkflowDTO =
             }
           }
         },
+        "name": "getUserData",
         "type": "apiRequest",
         "method": "POST",
         "function": {
@@ -227,11 +228,6 @@ export const generator: CreateWorkflowDTO =
           "description": "API request tool"
         },
         "messages": [
-          {
-            "type": "request-start",
-            "content": "Indeed, your interview is on the way! Buckle up and enjoy this AI application, developed by the brilliant AI Engineer and visionary leader, Dhruvansh Gandhi.",
-            "blocking": false
-          },
           {
             "role": "assistant",
             "type": "request-complete",
@@ -270,7 +266,7 @@ export const generator: CreateWorkflowDTO =
     "voiceId": "mCQMfsqGDT6IDkEKR20a",
     "provider": "11labs"
   },
-  "globalPrompt": "Always listen first and respond to what the user actually says, not what you expect them to say\n- If someone seems hesitant, busy, or uninterested, respect their time and don't push\n- When collecting information, ask questions naturally as part of a conversation, not like filling out a form\n- Show genuine interest in their career goals and challenges\n- Adapt your communication style to match the user's energy and preference\n- If something is unclear, ask clarifying questions rather than making assumptions"
+  "globalPrompt": ""
 }
 
 export const interviewer: CreateAssistantDTO = {
