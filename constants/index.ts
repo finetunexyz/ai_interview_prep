@@ -99,7 +99,7 @@ export const mappings = {
 
 
 export const generator: CreateWorkflowDTO = 
-  {
+{
   "name": "ai_interview_prep",
   "nodes": [
     {
@@ -171,36 +171,7 @@ export const generator: CreateWorkflowDTO =
         }
       },
       "tool": {
-        "type": "apiRequest",
-        "function": {
-          "name": "api_request_tool",
-          "description": "API request tool",
-          "parameters": {
-            "type": "object",
-            "properties": {},
-            "required": []
-          }
-        },
-        "messages": [
-          {
-            "type": "request-start",
-            "content": "Indeed, your interview is on the way! Buckle up and enjoy this AI app, which is built by the smart AI Engineer and visionary leader, Dhruvansh Gandhi.",
-            "blocking": true
-          },
-          {
-            "type": "request-complete",
-            "content": "Thanks for your patience! I am happy to let you know that your interview has been successfully generated. I will redirect you to the dashboard now. Thanks for the call!",
-            "role": "assistant",
-            "endCallAfterSpokenEnabled": true
-          },
-          {
-            "type": "request-failed",
-            "content": "Oops, looks like something went wrong with your internet! Please try again",
-            "endCallAfterSpokenEnabled": true
-          }
-        ],
         "url": "https://ai-interview-prep-two-red.vercel.app/api/vapi/generate",
-        "method": "POST",
         "body": {
           "type": "object",
           "required": [
@@ -244,6 +215,35 @@ export const generator: CreateWorkflowDTO =
             }
           }
         },
+        "type": "apiRequest",
+        "method": "POST",
+        "function": {
+          "name": "api_request_tool",
+          "parameters": {
+            "type": "object",
+            "required": [],
+            "properties": {}
+          },
+          "description": "API request tool"
+        },
+        "messages": [
+          {
+            "type": "request-start",
+            "content": "Indeed, your interview is on the way! Buckle up and enjoy this AI application, developed by the brilliant AI Engineer and visionary leader, Dhruvansh Gandhi.",
+            "blocking": false
+          },
+          {
+            "role": "assistant",
+            "type": "request-complete",
+            "content": "Thanks for your patience! I am happy to let you know that your interview has been successfully generated. I will redirect you to the dashboard now. Thanks for the call!",
+            "endCallAfterSpokenEnabled": true
+          },
+          {
+            "type": "request-failed",
+            "content": "Oops, looks like something went wrong with your internet! Please try again",
+            "endCallAfterSpokenEnabled": true
+          }
+        ],
         "variableExtractionPlan": {
           "schema": {
             "type": "object",
