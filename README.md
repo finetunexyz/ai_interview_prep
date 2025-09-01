@@ -48,10 +48,6 @@ PrepViewAI is an intelligent interview preparation platform that leverages cutti
   <img src="https://img.shields.io/badge/Zod-3068B7?style=for-the-badge&logoColor=white" alt="Zod" />
 </a>
 
-<a href="https://github.com/features/actions" target="_blank">
-  <img src="https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white" alt="GitHub Actions" />
-</a>
-
 </div>
 
 
